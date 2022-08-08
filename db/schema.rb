@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_08_132323) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_08_142231) do
+  create_table "factories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "type", null: false
+    t.integer "level", default: 1, null: false
+    t.datetime "upgraded_to_level_two_at", precision: nil
+    t.datetime "upgraded_to_level_three_at", precision: nil
+    t.datetime "upgraded_to_level_four_at", precision: nil
+    t.datetime "upgraded_to_level_five_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_factories_on_type", unique: true
+    t.index ["user_id"], name: "index_factories_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.datetime "created_at", null: false
@@ -25,4 +39,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_08_132323) do
     t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "factories", "users"
 end

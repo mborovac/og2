@@ -1,1 +1,12 @@
 Welcome home!
+
+<br>
+<br>
+Your Factories:
+
+<br>
+<%= link_to 'Iron Factory', factory_path(current_user.iron_factory.id) %>
+<br>
+<%= link_to 'Copper Factory', factory_path(current_user.copper_factory.id) %>
+<br>
+<%= link_to 'Gold Factory', factory_path(current_user.gold_factory.id) %>

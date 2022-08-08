@@ -1,0 +1,20 @@
+<% if @factory %>
+  Your magnificent Factory!
+  <br>
+
+  <%= "Type: #{@factory.type}" %>
+  <br>
+  <%= "Level: #{@factory.level}" %>
+  <br>
+  <%= "Production: #{@factory.production(@factory.level)}" %>
+  <br>
+  <%= "Next upgrade duration: #{@factory.next_upgrade_duration(@factory.level)}" %>
+  <br>
+  <%= "Next upgrade cost: #{@factory.upgrade_cost(@factory.level)}" %>
+  <br>
+  <% if @factory.level < 5 %>
+    <%= link_to "Upgrade Level", upgrade_level_factory_path(@factory.id), data: { 'turbo-method': :patch } %>
+  <% end %>
+<% else %>
+  Oops there seems to be nothing here!
+<% end %>
